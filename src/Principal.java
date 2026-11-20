@@ -16,6 +16,7 @@ public class Principal {
     // Dificultad por defecto. Se puede cambiar aqui o pasando un numero como argumento.
     static int DIFICULTAD = 3;
     static final int NUM_WORKERS = 4;
+    static final List<Process> ACTIVOS = new java.util.concurrent.CopyOnWriteArrayList<>();
 
     /** Un bloque ya aceptado en la cadena. */
     record Bloque(int numero, String datos, String hashAnterior, long nonce, String hash,
@@ -25,6 +26,7 @@ public class Principal {
     record Resultado(int id, long pid, String linea) { }
 
     public static void main(String[] args) {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> ACTIVOS.forEach(Process::destroyForcibly)));
         // 1. Dificultad
         if (args.length > 0) {
             try {
@@ -127,6 +129,7 @@ public class Principal {
                 String.valueOf(id), String.valueOf(NUM_WORKERS));
         pb.redirectError(ProcessBuilder.Redirect.INHERIT);
         Process p = pb.start();
+        ACTIVOS.add(p);
 
         Thread lector = new Thread(() -> {
             String linea = null;
