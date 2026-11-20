@@ -11,7 +11,7 @@ Simulación de minado de una cadena de bloques en Java. Un proceso principal con
 ```
 src/Hash.java        Utilidad SHA-256 (hexadecimal)
 src/Worker.java      Proceso hijo: busca un nonce válido
-src/Principal.java   Proceso principal: construye la cadena, lanza y valida
+src/Principal.java   Proceso principal: construye la cadena, lanza los procesos y valida
 datos.txt            Fichero de datos de ejemplo
 ```
 
