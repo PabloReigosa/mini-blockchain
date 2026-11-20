@@ -1,6 +1,6 @@
 # Mini block chain
 
-Simulación de minado de una cadena de bloques en Java (DAM2). Un proceso principal construye la cadena a partir de un fichero de texto y, para cada bloque, lanza 4 procesos worker independientes que buscan en paralelo un nonce válido (prueba de trabajo).
+Simulación de minado de una cadena de bloques en Java. Un proceso principal construye la cadena a partir de un fichero de texto y, para cada bloque, lanza 4 procesos worker independientes que buscan en paralelo un nonce válido.
 
 ## Requisitos
 
@@ -30,7 +30,7 @@ java -cp out Principal
 El programa pide por consola:
 
 1. La **semilla inicial** (seed): cualquier texto no vacío.
-2. La **ruta del fichero de datos**: por ejemplo `datos.txt`.
+2. La **ruta del fichero de datos**: en el ejemplo `datos.txt`.
 
 ### Dificultad
 
@@ -39,7 +39,7 @@ La dificultad es el número de ceros que debe tener al principio cada hash. Por 
 - Pasando un número como argumento: `java -cp out Principal 4`
 - Modificando la variable `DIFICULTAD` de `Principal.java`.
 
-Debe ser un entero entre 1 y 64. Con valores altos el minado tarda mucho más.
+Debe ser un número entero entre 1 y 64. Con números altos el minado tarda mucho más.
 
 ### Formato del fichero de datos
 
